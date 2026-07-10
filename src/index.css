@@ -1,0 +1,400 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =================================================================
+   Premium Portfolio Design System — Sneharsha Thammisetti
+   Palette: Deep Slate · Electric Indigo · Soft Teal · Warm Amber
+   Typography: Sora (display) · Inter (body) · JetBrains Mono (code)
+   ================================================================= */
+
+@layer base {
+  :root {
+    /* ── Background & Surface ── */
+    --background: 240 20% 4%;          /* #08080f – near-black, cool tint */
+    --foreground: 220 18% 94%;         /* #ecedF2 – near-white */
+
+    /* ── Card & Popover ── */
+    --card: 240 16% 7%;                /* subtle lift above bg */
+    --card-foreground: 220 18% 92%;
+
+    --popover: 240 16% 6%;
+    --popover-foreground: 220 18% 94%;
+
+    /* ── Primary — Electric Indigo ── */
+    --primary: 238 84% 67%;            /* #6366f1 – vibrant indigo */
+    --primary-foreground: 0 0% 100%;
+
+    /* ── Secondary — Soft Teal ── */
+    --secondary: 178 72% 52%;          /* #2dd4bf – teal */
+    --secondary-foreground: 240 20% 4%;
+
+    /* ── Muted ── */
+    --muted: 240 12% 12%;
+    --muted-foreground: 220 10% 56%;
+
+    /* ── Accent — Warm Amber ── */
+    --accent: 38 92% 60%;              /* #f59e0b – amber */
+    --accent-foreground: 240 20% 4%;
+
+    /* ── Destructive ── */
+    --destructive: 0 72% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* ── Borders & Inputs ── */
+    --border: 240 12% 16%;
+    --input: 240 12% 12%;
+    --ring: 238 84% 67%;               /* indigo focus ring */
+
+    /* ── Radius ── */
+    --radius: 0.875rem;
+
+    /* ── Extended Palette (used in components) ── */
+    --indigo: 238 84% 67%;
+    --indigo-light: 234 89% 74%;       /* lighter indigo for gradients */
+    --teal: 178 72% 52%;
+    --teal-light: 172 66% 62%;
+    --amber: 38 92% 60%;
+    --rose: 356 75% 63%;               /* subtle rose for destructive/badges */
+    --violet: 258 78% 68%;             /* mid-purple for variety */
+
+    /* ── Glassmorphism ── */
+    --glass-bg: rgba(255, 255, 255, 0.035);
+    --glass-border: rgba(255, 255, 255, 0.08);
+
+    /* ── Gradients ── */
+    --gradient-primary: linear-gradient(135deg, hsl(238 84% 67%), hsl(258 78% 68%));
+    --gradient-secondary: linear-gradient(135deg, hsl(258 78% 68%), hsl(178 72% 52%));
+    --gradient-accent: linear-gradient(135deg, hsl(178 72% 52%), hsl(38 92% 60%));
+    --gradient-bg: linear-gradient(145deg, hsl(240 20% 4%), hsl(240 16% 6%));
+    --gradient-hero: linear-gradient(135deg, hsl(238 84% 67% / 0.15), hsl(178 72% 52% / 0.10));
+
+    /* ── Glows (refined — not blinding) ── */
+    --glow-primary: 0 0 24px hsl(238 84% 67% / 0.35);
+    --glow-secondary: 0 0 24px hsl(178 72% 52% / 0.35);
+    --glow-accent: 0 0 20px hsl(38 92% 60% / 0.30);
+    --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+
+    /* ── Box shadows (for tailwind config aliases) ── */
+    --shadow-neon-blue: var(--glow-primary);
+    --shadow-neon-purple: var(--glow-secondary);
+    --shadow-neon-green: var(--glow-accent);
+
+    /* ── Neon color aliases (for backward compat with components) ── */
+    --neon-blue: var(--indigo);
+    --neon-purple: var(--violet);
+    --neon-green: var(--teal);
+    --neon-cyan: var(--teal-light);
+    --neon-pink: var(--rose);
+
+    /* ── Transitions ── */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* ── Sidebar (required by shadcn) ── */
+    --sidebar-background: 240 16% 7%;
+    --sidebar-foreground: 220 18% 92%;
+    --sidebar-primary: 238 84% 67%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 12% 12%;
+    --sidebar-accent-foreground: 220 18% 92%;
+    --sidebar-border: 240 12% 16%;
+    --sidebar-ring: 238 84% 67%;
+  }
+
+  /* ── Light mode (same palette, inverted surface) ── */
+  .light {
+    --background: 220 20% 97%;
+    --foreground: 240 20% 10%;
+    --card: 220 20% 100%;
+    --card-foreground: 240 20% 10%;
+    --border: 220 16% 88%;
+    --input: 220 16% 93%;
+    --muted: 220 16% 92%;
+    --muted-foreground: 220 12% 46%;
+  }
+}
+
+/* ── Base Resets ── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    background: var(--gradient-bg);
+    min-height: 100vh;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    overflow-x: hidden;
+  }
+
+  /* ── Improved focus styles for keyboard navigation ── */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* ── Headings use Sora ── */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sora;
+    text-wrap: balance;
+  }
+
+  /* ── Code blocks use JetBrains Mono ── */
+  code, kbd, pre, samp {
+    @apply font-mono;
+  }
+
+  /* ── Smooth image rendering ── */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+
+  /* ── Improve paragraph readability ── */
+  p {
+    text-wrap: pretty;
+    line-height: 1.75;
+  }
+}
+
+/* ── Component Utilities ── */
+@layer components {
+
+  /* Glassmorphism card */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glass);
+    will-change: transform;
+  }
+
+  /* ── Glow effects (refined, not blinding) ── */
+  .glow-blue,
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-purple,
+  .glow-secondary {
+    box-shadow: var(--glow-secondary);
+  }
+
+  .glow-green,
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  /* ── Hover tilt (subtle 3D) ── */
+  .hover-tilt {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-tilt:hover {
+    transform: perspective(1200px) rotateX(2deg) rotateY(2deg) translateZ(8px);
+  }
+
+  /* ── Neon text (toned down) ── */
+  .text-neon-blue {
+    color: hsl(var(--indigo));
+    text-shadow: 0 0 20px hsl(var(--indigo) / 0.4);
+  }
+
+  .text-neon-purple {
+    color: hsl(var(--violet));
+    text-shadow: 0 0 20px hsl(var(--violet) / 0.4);
+  }
+
+  .text-neon-green {
+    color: hsl(var(--teal));
+    text-shadow: 0 0 20px hsl(var(--teal) / 0.4);
+  }
+
+  .text-neon-cyan {
+    color: hsl(var(--teal-light));
+    text-shadow: 0 0 20px hsl(var(--teal-light) / 0.35);
+  }
+
+  .text-neon-pink {
+    color: hsl(var(--rose));
+    text-shadow: 0 0 20px hsl(var(--rose) / 0.35);
+  }
+
+  /* ── Gradient text utility ── */
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-secondary {
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Animated gradient border ── */
+  .border-animate {
+    background: linear-gradient(45deg, transparent 33%, hsl(var(--primary)) 33%, hsl(var(--primary)) 66%, transparent 66%);
+    background-size: 6px 6px;
+    animation: border-dance 1s linear infinite;
+  }
+
+  /* ── Typing cursor ── */
+  .typing-cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+  }
+
+  /* ── Section: consistent vertical rhythm ── */
+  .section-py {
+    @apply py-24 md:py-28;
+  }
+
+  /* ── Subtle section divider ── */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--border)) 30%, hsl(var(--border)) 70%, transparent);
+    opacity: 0.6;
+  }
+
+  /* ── Tag / badge ── */
+  .tag {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium;
+    background: hsl(var(--muted));
+    color: hsl(var(--muted-foreground));
+    border: 1px solid hsl(var(--border));
+  }
+
+  .tag-primary {
+    background: hsl(var(--primary) / 0.12);
+    color: hsl(var(--primary));
+    border-color: hsl(var(--primary) / 0.25);
+  }
+
+  .tag-secondary {
+    background: hsl(var(--secondary) / 0.12);
+    color: hsl(var(--secondary));
+    border-color: hsl(var(--secondary) / 0.25);
+  }
+
+  /* ── Card hover lift ── */
+  .card-hover {
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.25s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--glow-primary), var(--shadow-glass);
+  }
+
+  /* ── Content visibility hint for performance ── */
+  .below-fold {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+  }
+}
+
+/* ── Keyframes ── */
+@keyframes border-dance {
+  0%   { background-position: 0 0; }
+  100% { background-position: 6px 6px; }
+}
+
+@keyframes blink {
+  0%, 50%  { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px hsl(var(--primary) / 0.4); }
+  50%       { box-shadow: 0 0 24px hsl(var(--primary) / 0.7); }
+}
+
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes loading-bar {
+  0%   { width: 0%; }
+  50%  { width: 70%; }
+  100% { width: 100%; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.5);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}
+
+/* ── Selection ── */
+::selection {
+  background: hsl(var(--primary) / 0.25);
+  color: hsl(var(--foreground));
+}
+
+/* ── Reduced motion respect ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

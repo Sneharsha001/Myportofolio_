@@ -1,0 +1,106 @@
+# ============================================================
+# .gitignore — quantum-code-lair
+# Production-grade exclusion rules for a Vite + React + TS project
+# ============================================================
+
+
+# ── 1. Dependencies ─────────────────────────────────────────
+node_modules/
+node_modules
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+
+# ── 2. Build & Production Outputs ───────────────────────────
+/dist
+/dist-ssr
+/build
+/out
+.production
+*.local
+
+# TypeScript incremental build cache
+*.tsbuildinfo
+
+
+# ── 3. Environment & Sensitive Configuration ─────────────────
+# Never commit secrets or local config to version control
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env.local
+*.env.*.local
+
+
+# ── 4. System & OS Metadata ──────────────────────────────────
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+
+# ── 5. IDE & Editor Configs ──────────────────────────────────
+.idea/
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+
+
+# ── 6. Log Files ─────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+logs/
+*.log.*
+
+
+# ── 7. Runtime & Cache Dirs ──────────────────────────────────
+.cache/
+.parcel-cache/
+.turbo/
+.eslintcache
+.stylelintcache
+.vite/
+
+
+# ── 8. Test & Coverage Outputs ───────────────────────────────
+/coverage
+*.lcov
+.nyc_output/
+
+
+# ── 9. Misc ──────────────────────────────────────────────────
+*.pid
+*.seed
+*.pid.lock
+.grunt/
+.lock-wscript
+jspm_packages/

@@ -58,8 +58,8 @@ const Skills: React.FC = () => {
               Tech Stack
             </span>
           </h2>
-          <p className="text-sm text-slate-400 mt-3 max-w-xl mx-auto leading-relaxed">
-            Technologies I work with, grouped by domain.
+          <p className="mt-4 text-sm md:text-base font-medium tracking-wide bg-gradient-to-r from-slate-300 via-indigo-300 to-indigo-500 bg-clip-text text-transparent max-w-2xl mx-auto text-center">
+            Technologies I work with.
           </p>
         </motion.div>
 
@@ -87,30 +87,31 @@ const Skills: React.FC = () => {
           ))}
         </motion.div>
 
-        {/* ── Skill groups ────────────────────────────────────────────── */}
-        <div className="space-y-12">
-          {visibleGroups.map((group, gi) => (
-            <motion.div
-              key={group.category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.4, delay: gi * 0.07 }}
-            >
-              {/* Premium category header */}
-              <h3 className="text-[11px] uppercase tracking-[0.25em] font-semibold text-slate-500/90 mb-6 flex items-center gap-2">
-                <span className={cn('w-1 h-1 rounded-full shrink-0', ACCENT[group.category] ?? 'bg-indigo-500')} />
-                {group.category}
-              </h3>
+        <div className="min-h-[450px] lg:min-h-[380px] w-full mt-10">
+          <div className="space-y-12">
+            {visibleGroups.map((group, gi) => (
+              <motion.div
+                key={group.category}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.4, delay: gi * 0.07 }}
+              >
+                {/* Premium category header */}
+                <h3 className="text-[11px] uppercase tracking-[0.25em] font-semibold text-slate-500/90 mb-6 flex items-center gap-2">
+                  <span className={cn('w-1 h-1 rounded-full shrink-0', ACCENT[group.category] ?? 'bg-indigo-500')} />
+                  {group.category}
+                </h3>
 
-              {/* Capsule pill flow */}
-              <div className="flex flex-wrap gap-3">
-                {group.skills.map((skill, si) => (
-                  <SkillCard key={skill.name} skill={skill} index={gi * 10 + si} />
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                {/* Capsule pill flow */}
+                <div className="flex flex-wrap gap-3">
+                  {group.skills.map((skill, si) => (
+                    <SkillCard key={skill.name} skill={skill} index={gi * 10 + si} />
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* ── Currently Learning panel ────────────────────────────────── */}
@@ -129,16 +130,10 @@ const Skills: React.FC = () => {
 
             {/* Panel heading */}
             <div className="text-center mb-8 relative z-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/20 bg-indigo-500/5 mb-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
-                <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-indigo-400">
-                  Active Roadmap
-                </span>
-              </div>
               <h3 className="text-xl font-bold text-white tracking-tight">
                 Currently Learning
               </h3>
-              <p className="text-xs text-slate-500 mt-1.5 max-w-md mx-auto">
+              <p className="mt-3 text-sm md:text-base font-medium tracking-wide bg-gradient-to-r from-indigo-300 via-purple-300 to-slate-300 bg-clip-text text-transparent max-w-2xl mx-auto text-center">
                 My structured learning path — from fundamentals to cloud-native DevOps.
               </p>
             </div>
@@ -154,27 +149,26 @@ const Skills: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: i * 0.055 }}
-                    className="group relative flex items-center gap-3.5 bg-gradient-to-b from-[#08081a]/95 to-[#04040d]/98 border border-slate-900/90 hover:border-indigo-500/50 px-5 py-3 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.02] shadow-xl hover:shadow-[0_15px_30px_rgba(99,102,241,0.12)] cursor-pointer overflow-hidden"
+                    className="group relative flex items-center gap-4 bg-[#121226]/60 backdrop-blur-md border border-white/10 hover:border-indigo-500/50 px-5 py-3 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:bg-[#1a1a35]/80 hover:shadow-[0_0_20px_rgba(99,102,241,0.2)] cursor-pointer overflow-hidden"
                   >
-                    {/* Ambient neon highlight */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/5 via-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl pointer-events-none" />
+                    {/* Micro-glow spotlight backdrop */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
                     {/* Icon shield */}
-                    <div className="w-8 h-8 rounded-lg bg-[#0c0c24] border border-slate-800/80 flex items-center justify-center shrink-0 transition-all duration-300 group-hover:border-indigo-500/30 z-10">
+                    <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-indigo-500/20 group-hover:border-indigo-500/50 transition-all duration-300 z-10">
                       <Icon
-                        size={16}
-                        className="transition-all duration-300 group-hover:scale-110 group-hover:text-indigo-400"
+                        className="w-6 h-6 transition-all duration-300 group-hover:scale-110"
                         style={{ color: item.iconColor ?? '#94a3b8' }}
                       />
                     </div>
 
                     {/* Name + tag */}
                     <div className="z-10 flex flex-col gap-0.5">
-                      <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors duration-200 tracking-wide leading-none whitespace-nowrap">
+                      <span className="text-sm font-semibold text-slate-200 group-hover:text-white transition-colors duration-200 tracking-wide leading-none whitespace-nowrap">
                         {item.name}
                       </span>
                       {item.tag && (
-                        <span className="text-[10px] text-slate-600 group-hover:text-slate-500 transition-colors duration-200 leading-none">
+                        <span className="text-[10px] text-slate-500 group-hover:text-slate-400 transition-colors duration-200 leading-none">
                           {item.tag}
                         </span>
                       )}

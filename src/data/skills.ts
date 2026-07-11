@@ -13,6 +13,7 @@ import {
   SiFlask,
   SiInsomnia,
   SiMongodb,
+  SiMysql,
   SiSqlite,
   SiLeetcode,
   SiLinux,
@@ -62,6 +63,7 @@ export const skillGroups: SkillGroup[] = [
     skills: [
       { name: 'MongoDB', icon: SiMongodb, iconColor: '#47A248', category: 'Databases' },
       { name: 'SQLite',  icon: SiSqlite,  iconColor: '#003B57', category: 'Databases' },
+      { name: 'MySQL',   icon: SiMysql,   iconColor: '#4479A1', category: 'Databases' },
     ],
   },
   {

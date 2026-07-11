@@ -16,22 +16,21 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, index = 0 }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.3, delay: index * 0.035 }}
-      className="group relative flex items-center gap-3.5 bg-gradient-to-b from-[#08081a]/95 to-[#04040d]/98 border border-slate-900/90 hover:border-indigo-500/50 px-5 py-3 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.02] shadow-xl hover:shadow-[0_15px_30px_rgba(99,102,241,0.12)] cursor-pointer overflow-hidden w-fit"
+      className="group relative flex items-center gap-4 bg-[#121226]/60 backdrop-blur-md border border-white/10 hover:border-indigo-500/50 px-5 py-3 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:bg-[#1a1a35]/80 hover:shadow-[0_0_20px_rgba(99,102,241,0.2)] cursor-pointer overflow-hidden w-fit"
     >
-      {/* Ambient neon highlight on hover */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/5 via-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl pointer-events-none" />
+      {/* Micro-glow spotlight backdrop */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       {/* Brand icon shield */}
-      <div className="w-8 h-8 rounded-lg bg-[#0c0c24] border border-slate-800/80 flex items-center justify-center shrink-0 transition-all duration-300 group-hover:border-indigo-500/30 z-10">
+      <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-indigo-500/20 group-hover:border-indigo-500/50 transition-all duration-300 z-10">
         <Icon
-          size={16}
-          className="transition-all duration-300 group-hover:scale-110 group-hover:text-indigo-400"
+          className="w-6 h-6 transition-all duration-300 group-hover:scale-110"
           style={{ color: skill.iconColor ?? '#94a3b8' }}
         />
       </div>
 
       {/* Skill name */}
-      <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors duration-200 tracking-wide leading-none whitespace-nowrap z-10">
+      <span className="text-sm font-semibold text-slate-200 group-hover:text-white transition-colors duration-200 tracking-wide leading-none whitespace-nowrap z-10">
         {skill.name}
       </span>
 

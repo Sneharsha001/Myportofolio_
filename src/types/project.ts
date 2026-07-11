@@ -25,6 +25,7 @@ export interface Project {
   year: number;
   technologies: string[];
   image?: string;
+  imageUrl?: string;
   screenshots?: string[];
   architectureDiagram?: string;
   githubUrl?: string;

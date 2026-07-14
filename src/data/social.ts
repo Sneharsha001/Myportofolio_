@@ -34,8 +34,8 @@ export const socialLinks: SocialLink[] = [
   },
   {
     name: 'Email',
-    url: `mailto:sneharshathammisetti@gmail.com`, // TODO: Confirm email
-    handle: 'sneharshathammisetti@gmail.com',
+    url: `mailto:sneharshathammisetty@gmail.com`, // TODO: Confirm email
+    handle: 'sneharshathammisetty@gmail.com',
     icon: 'mail',
     color: 'hover:text-emerald-400',
   },

@@ -48,7 +48,7 @@ export const personal = {
   location: 'Hyderabad, India',
   availability: 'Open to internships & full-time roles',
   responseTime: 'Within 24 hours',
-  email: 'sneharshathammisetti@gmail.com', // TODO: Replace with your actual email
+  email: 'sneharshathammisetty@gmail.com', // TODO: Replace with your actual email
   resumeUrl: undefined as string | undefined, // TODO: Add your resume PDF URL (e.g., Google Drive link)
   openToOpportunities: true,
 } as const;

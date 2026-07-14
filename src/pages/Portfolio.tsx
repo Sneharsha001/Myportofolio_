@@ -8,11 +8,7 @@ import ScrollToTop from '@/components/common/ScrollToTop';
 import AIWidget from '@/components/common/AIWidget';
 
 // ── Lazy-load below-fold sections for faster initial render ──────────────────
-const Experience     = lazy(() => import('@/components/Experience'));
 const Certifications = lazy(() => import('@/components/Certifications'));
-const Research       = lazy(() => import('@/components/Research'));
-const Blog           = lazy(() => import('@/components/Blog'));
-const Resume         = lazy(() => import('@/components/Resume'));
 const Contact        = lazy(() => import('@/components/Contact'));
 const Footer         = lazy(() => import('@/components/Footer'));
 
@@ -119,19 +115,7 @@ const Portfolio = () => {
 
         {/* ── Below the fold (lazy) ── */}
         <Suspense fallback={<SectionFallback />}>
-          <Experience />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
           <Certifications />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
-          <Research />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
-          <Blog />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
-          <Resume />
         </Suspense>
         <Suspense fallback={<SectionFallback />}>
           <Contact />
